@@ -1,13 +1,14 @@
 {
-    "name": "epicgames-freebies-claimer",
-    "description": "Claim free game promotions from the Epic Game Store",
-    "version": "1.1.1",
-    "author": "Revadike",
-    "homepage": "https://revadike.com",
-    "url": "https://github.com/revadike/epicgames-freebies-claimer",
+    "name": "epicgames-freebies-claimer-heroku",
+    "description": "Claim free game promotions from the Epic Game Store, deployable to heroku for automatic runs. Based on Revadike's script",
+    "version": "1.0.0",
+    "author": "fer662",
+    "homepage": "https://github.com/fer662/epicgames-freebies-claimer",
+    "url": "https://github.com/fer662/epicgames-freebies-claimer",
     "license": "MIT",
-    "main": "gimme_free_epic_shit.js",
+    "main": "index.js",
     "dependencies": {
-        "epicgames-client": "latest"
+        "epicgames-client": "latest",
+        "node-cron": "^2.0.3"
     }
 }
