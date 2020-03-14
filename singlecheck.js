@@ -1,9 +1,10 @@
 const { Launcher: EpicGames } = require(`epicgames-client`);
  
-async function check() {
+async function check(account) {
+  console.log(`Running check for free games for ${account.email}`);
   const client = new EpicGames({
-    email: process.env.EMAIL,
-    password: process.env.PASSWORD
+    email: account.email,
+    password: account.password
   });
 
   if (!await client.init() || !await client.login()) {
@@ -46,6 +47,11 @@ async function check() {
 }
 
 console.log("Running check for free games...");
-check().then(() => {
+const accounts = JSON.parse(process.env.ACCOUNTS);
+const promises = accounts.map((account) => check(account));
+
+Promise.all(promises).then(() => {
   console.log("Done checking for free games...");
-})
+}).catch((error) => {
+  console.log("Error checking for free games... " + error);
+});
