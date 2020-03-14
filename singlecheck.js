@@ -52,6 +52,8 @@ const promises = accounts.map((account) => check(account));
 
 Promise.all(promises).then(() => {
   console.log("Done checking for free games...");
+  process.exit(0);
 }).catch((error) => {
   console.log("Error checking for free games... " + error);
+  process.exit(1);
 });
