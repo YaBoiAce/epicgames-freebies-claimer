@@ -7,4 +7,4 @@ npm install
 
 Usage:
 
-node singlecheck.js <email> <password>
+node singlecheck.js email password
