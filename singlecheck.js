@@ -46,8 +46,25 @@ async function check(account) {
   console.log(`Logged out of Epic Games`);
 }
 
-console.log("Running check for free games...");
-const accounts = JSON.parse(process.env.ACCOUNTS);
+let accounts = [];
+if (process.env.ACCOUNTS !== undefined) {
+  console.log("Running check for free games...");
+  accounts = JSON.parse(process.env.ACCOUNTS);
+}
+else {
+  if (process.argv.length === 4) {
+    let email = process.argv[2];
+    let password = process.argv[3];
+
+    accounts = [{ email: email, password: password}];
+  }
+  else {
+    console.log("Invalid parameters. Usage:");
+    console.log("node singlecheck.js <email> <password>");
+    process.exit(1);
+  }
+}
+
 const promises = accounts.map((account) => check(account));
 
 Promise.all(promises).then(() => {
