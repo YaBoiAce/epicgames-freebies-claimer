@@ -69,7 +69,15 @@ let p = Promise.resolve();
 
 accounts.forEach((account) => {
   p = p.then(() => {
-    return check(account);
+    return new Promise((resolve, reject) => {
+      check(account).then(() => {
+        console.log("Done checking for free games... "  + account.email);
+        setTimeout(resolve, 5 * 60000);
+      }).catch((error) => {
+        console.log("Error checking for free games for " + account.email + " " + error);
+        setTimeout(resolve, 5 * 60000);
+      });
+    });
   });
 });
 
