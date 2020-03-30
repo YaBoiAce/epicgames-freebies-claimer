@@ -65,9 +65,15 @@ else {
   }
 }
 
-const promises = accounts.map((account) => check(account));
+let p = Promise.resolve();
 
-Promise.all(promises).then(() => {
+accounts.forEach((account) => {
+  p = p.then(() => {
+    return check(account);
+  });
+});
+
+p.then(() => {
   console.log("Done checking for free games...");
   process.exit(0);
 }).catch((error) => {
