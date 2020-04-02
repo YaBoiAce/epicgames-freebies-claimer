@@ -1,1 +1,1 @@
-web: node singlecheck.js
+web: node index.js
