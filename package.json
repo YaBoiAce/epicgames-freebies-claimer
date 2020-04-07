@@ -6,7 +6,7 @@
     "homepage": "https://github.com/fer662/epicgames-freebies-claimer",
     "url": "https://github.com/fer662/epicgames-freebies-claimer",
     "license": "MIT",
-    "main": "index.js",
+    "main": "singlecheck.js",
     "dependencies": {
         "epicgames-client": "latest",
         "express": "^4.17.1",
